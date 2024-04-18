@@ -48,6 +48,9 @@ class UserService:
     async def create(cls, session: AsyncSession, user_data: Dict[str, str]) -> Optional[User]:
         try:
             validated_data = UserCreate(**user_data).model_dump()
+
+            validated_data['username'], validated_data['email'] = map(str.lower, (validated_data['username'], validated_data['email']))
+
             existing_user = await cls.get_by_username(session, validated_data['username']) or await cls.get_by_email(session, validated_data['email'])
             if existing_user:
                 logger.error("User with given email or username already exists.")
