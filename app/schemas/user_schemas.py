@@ -87,7 +87,7 @@ class UserBase(BaseModel):
     @validator('full_name')
     def validate_full_name(cls, v):
         if v and not re.match(r"^[a-zA-Z\s'-.]+$", v):
-            raise ValueError("Full name can only contain letters, spaces, hyphens, or apostrophes.")
+            raise ValueError("Full name can only contain letters, spaces, hyphens, periods, or apostrophes.")
         return v
 
     @validator('profile_picture_url', pre=True, always=True)
