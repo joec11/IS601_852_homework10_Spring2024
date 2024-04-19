@@ -62,7 +62,7 @@ class UserBase(BaseModel):
     full_name: Optional[str] = Field(
         None,
         max_length=100,
-        description="The full name of the user, if available. Should contain only letters, spaces, hyphens, or apostrophes.",
+        description="The full name of the user, if available. Should contain only letters, spaces, hyphens, periods, or apostrophes.",
         example="John Doe"
     )
     bio: Optional[str] = Field(
@@ -143,7 +143,7 @@ class UserCreate(UserBase):
                 "password": "SecurePassword123!",
                 "full_name": "John Doe",
                 "bio": "I am a data scientist passionate about machine learning and big data analytics.",
-                "profile_picture_url": "https://example.com/profile_pictures/jane_smith.jpg"
+                "profile_picture_url": "https://example.com/profile_pictures/john_doe.jpg"
             }
         }
 
